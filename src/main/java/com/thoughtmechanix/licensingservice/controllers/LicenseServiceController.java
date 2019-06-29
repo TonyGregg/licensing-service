@@ -19,6 +19,7 @@ import java.util.Map;
  **/
 @RestController
 @RequestMapping("/v1/orgs/{orgId}/licenses")
+
 public class LicenseServiceController {
     Logger logger = LoggerFactory.getLogger(this.getClass());
 
