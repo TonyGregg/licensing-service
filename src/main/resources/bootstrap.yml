@@ -1,9 +1,9 @@
 spring:
   application:
     name: licensingservice
-#  profiles:
-#    active:
-#      prod
+  profiles:
+    active:
+      default
   cloud:
     config:
       uri:

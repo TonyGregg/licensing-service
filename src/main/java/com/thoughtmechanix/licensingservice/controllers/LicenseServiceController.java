@@ -1,5 +1,6 @@
 package com.thoughtmechanix.licensingservice.controllers;
 
+import com.thoughtmechanix.licensingservice.config.LicenseConfig;
 import com.thoughtmechanix.licensingservice.config.TransportProperties;
 import com.thoughtmechanix.licensingservice.config.WordPressProperties;
 import com.thoughtmechanix.licensingservice.model.Country;
@@ -29,6 +30,9 @@ public class LicenseServiceController {
     @Autowired
     private TransportProperties transportProperties;
 
+    @Autowired
+    private LicenseConfig licenseConfig;
+
     @RequestMapping(value = "/{licenseId}", method = RequestMethod.GET)
     public License getLicenses(@PathVariable("orgId") String orgId, @PathVariable("licenseId") String licenseId) {
         logger.info("Menus ."+ wordPressProperties.getMenus());
@@ -36,6 +40,7 @@ public class LicenseServiceController {
         Map<String, Country> countryMap = transportProperties.getCountryMap();
 
         logger.info("Map object for India "+countryMap.get("India"));
+        logger.info("Property read from git config "+licenseConfig.getTracer());
         return new License().withLicenseId(licenseId).withProductName("Maverico");
     }
 }
